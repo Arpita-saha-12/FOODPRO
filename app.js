@@ -11,6 +11,7 @@ const passport = require('passport');
 const rtsIndex = require('./routes/index.router');
 
 var categoryController=require('./controllers/categoryController.js'); 
+var eventController=require('./controllers/eventController.js'); 
 var itemController=require('./controllers/itemController.js');
 var picController=require('./controllers/picController.js');
 //var questionController=require('./controllers/questionController.js');
@@ -18,8 +19,10 @@ var picController=require('./controllers/picController.js');
 var useritem=require('./controllers/useritemController.js');
 //var resultController=require('./controllers/resultController.js');
 var orderController=require('./controllers/orderController.js');
+// var ordereventController=require('./controllers/orderController.js');
 var viewuserController=require('./controllers/viewuserController.js');
 var userorder=require('./controllers/userOrderController.js');
+// var userorderevent=require('./controllers/usereventOrderController.js');
 var publicDir = require('path').join(__dirname,'/uploads');
 console.log(publicDir);
 
@@ -52,6 +55,7 @@ app.use((err, req, res, next) => {
 // start server
 app.listen(process.env.PORT, () => console.log(`Server started at port : ${process.env.PORT}`));
 app.use('/categories',categoryController);
+app.use('/events',eventController);
 app.use('/items',itemController);
 app.use('/pics',picController);
 //app.use('/question',questionController);
@@ -59,6 +63,9 @@ app.use('/pics',picController);
 app.use('/useritem', useritem);
 //app.use('/result',res);
 app.use('/order',orderController);
+// app.use('/orderevent',ordereventController);
 app.use('/viewuser',viewuserController);
 app.use('/userorder',userorder);
+// app.use('/userorderevent',userorderevent);
+
 app.use(express.static(publicDir));
